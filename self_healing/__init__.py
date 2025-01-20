@@ -4,4 +4,4 @@ from .core import debug_code, check_code
 
 __all__ = ["debug_code", "check_code"]
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"

@@ -1,7 +1,7 @@
 #main repair code
-from .data.detail import details, yes
-from .data.values import reset_font, font, error
-from .data.fixes import error_fixes, detailed_error_fixes
+from self_healing.data.detail import details, yes
+from self_healing.data.values import reset_font, font, error
+from self_healing.data.fixes import error_fixes, detailed_error_fixes
 
 def get_message(error, details= details):
     code_path = []

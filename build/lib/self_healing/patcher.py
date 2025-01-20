@@ -1,6 +1,7 @@
 #main repair code
-from .data.detail import details, error_fixes
+from .data.detail import details, yes
 from .data.values import reset_font, font, error
+from .data.fixes import error_fixes, detailed_error_fixes
 
 def get_message(error, details= details):
     code_path = []
@@ -45,17 +46,27 @@ class healer:
             error_fix = error_fixes.get(list(error_type.keys())[0])
         else:
             error_fix = f"{font.red}Error is not supported yet...{font.white}"
+        out_error = ""
         for i in range(len(error_path)):
             if setup:
                 if (i+1) < len(error_path):
-                    print(f"{font.white}called {font.yellow}from {font.white}{(error_path[::-1])[i]}", end = ", ")
+                    out_error += f"{font.white}called {font.yellow}from {font.white}{(error_path[::-1])[i]}, "
                 else:
-                    print(f"{font.white}called {font.yellow}from {font.white}{(error_path[::-1])[i]}", end = ".\n")
+                    out_error += f"{font.white}called {font.yellow}from {font.white}{(error_path[::-1])[i]}.\n"
             else:
                 if (i+1) < len(error_path):
-                    print(f"{font.red}{list(error_type.values())[0]}{font.yellow} at {font.white}{(error_path[::-1])[i]}", end = ", ")
+                    out_error += f"{font.red}{list(error_type.values())[0]}{font.yellow} at {font.white}{(error_path[::-1])[i]}, "
                     setup = True
                 else:
-                    print(f"{font.red}{list(error_type.values())[0]}{font.yellow} at {font.white}{(error_path[::-1])[i]}", end = ".\n")
+                    out_error += f"{font.red}{list(error_type.values())[0]}{font.yellow} at {font.white}{(error_path[::-1])[i]}.\n"
+        print(out_error, end="")
         print(f"{font.green}How to fix {error}{font.white}:{font.bold} {error_fix}")
-        reset_font()
+        if not details["detailed"]:
+            print(f"do you want more specific details?")
+            reset_font()
+            user_answer = input()
+        if user_answer in yes: details["detailed"] = True
+        if details["detailed"]:
+            print(f"Error name: {list(error_type.keys())[0]}")
+            print(f"Error detail: {out_error}")
+            print(f"Fix way: {detailed_error_fixes[list(error_type.keys())[0]]}")

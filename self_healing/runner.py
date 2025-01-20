@@ -1,7 +1,7 @@
 import subprocess, re
-from .patcher import healer
-from .data.values import font, reset_font
-from .data.detail import details
+from self_healing.patcher import healer
+from self_healing.data.values import font, reset_font
+from self_healing.data.detail import details
 
 def count_inputs(text):
     inside_single = False  # Track if inside single quotes

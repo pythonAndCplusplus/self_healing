@@ -1,4 +1,4 @@
-LICENCE
+LICENSE
 MANIFEST.in
 README.md
 pyproject.toml
@@ -10,4 +10,5 @@ self_healing/runner.py
 self_healing.egg-info/PKG-INFO
 self_healing.egg-info/SOURCES.txt
 self_healing.egg-info/dependency_links.txt
+self_healing.egg-info/requires.txt
 self_healing.egg-info/top_level.txt

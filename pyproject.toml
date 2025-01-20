@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "self_healing"
-version = "0.1.0"
-description = "A Python library for cryptocurrency analysis."
+version = "0.1.2"
+description = "The Self-Healing Library is a Python tool that dynamically runs and patches code to recover from runtime errors using installed data."
 authors = ["Arsam <ashouriarsamold@gmail.com>"]
 
 [tool.poetry.dependencies]

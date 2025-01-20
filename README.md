@@ -28,6 +28,7 @@ check_code(code=sample_code)
 ```
 
 ## Roadmap
+```
 - AI-powered code fixes
 - AST-based code patching
 - Interactive debugging prompts
