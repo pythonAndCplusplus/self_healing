@@ -1,8 +1,8 @@
 #main repair code
-from .data import detail
+from .data.detail import details, yes
 from .data.values import reset_font, font, error
 from .data.fixes import error_fixes, detailed_error_fixes
-details, yes = detail.details, detail.yes
+
 def get_message(error, details= details):
     code_path = []
     error_type = {}
