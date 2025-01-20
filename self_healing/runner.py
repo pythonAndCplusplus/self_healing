@@ -50,7 +50,7 @@ def count_inputs(text):
 class SelfHealingRunner:
     def __init__(self, code, error_message= "", detail= details):
         self.code = code
-        self.error_message = error_message
+        self.error_message = str(error_message)
         self.details = detail
 
     def run(self):
@@ -65,12 +65,12 @@ class SelfHealingRunner:
         if self.result.returncode == 0:
             return {"status": "Success", "message": self.result.stdout, "error": False}
         else:
-            self.error_message = str(self.result.stderr)[:-1]
+            self.error_message = str(self.result.stderr)
             return {"status": "Error", "message": self.result.stderr, "error": True}
 
     def heal_code(self):
         # Placeholder for AI-powered healing logic
-        if self.error_message[-1:] == "\n":
-            self.error_message = self.error_message[:-1]
-        bug = healer(self.error_message, self.details)
+        if str(self.error_message)[-1:] == "\n":
+            self.error_message = str(self.error_message)[:-1]
+        bug = healer(str(self.error_message), self.details)
         bug.heal()

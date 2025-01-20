@@ -6,7 +6,7 @@ def multiline_input():
     lines = []
     while True:
         try:
-            line = session.prompt("")
+            line = session.prompt("> ")
             if line.strip().lower() in exit:
                 break
             lines.append(line)

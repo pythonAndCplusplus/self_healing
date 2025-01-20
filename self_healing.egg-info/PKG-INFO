@@ -1,7 +1,8 @@
 Metadata-Version: 2.1
 Name: self_healing
-Version: 0.1.1
-Summary: helping to fix bugs and codes
+Version: 0.1.2
+Summary: The Self-Healing Library is a Python tool that dynamically runs and patches code to recover from runtime errors using installed data.
+Home-page: https://github.com/pythonAndCplusplus/self_healing
 Author: Arsam
 Author-email: ashouriarsamold@gmail.com
 Classifier: Programming Language :: Python :: 3
@@ -42,6 +43,7 @@ check_code(code=sample_code)
 ```
 
 ## Roadmap
+```
 - AI-powered code fixes
 - AST-based code patching
 - Interactive debugging prompts

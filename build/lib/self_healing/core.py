@@ -1,7 +1,7 @@
 from .runner import SelfHealingRunner
-from .data.values import reset_font, want_run_code, issue_not_found, found, issue, error, font
-from .data.functions import fix_console_fonts, multiline_input
-from .data.detail import yes
+from self_healing.data.values import reset_font, want_run_code, issue_not_found, found, issue, error, font
+from self_healing.data.functions import fix_console_fonts, multiline_input
+from self_healing.data.detail import yes
 fix_console_fonts()
 
 def get_error(code, file, line, details, detailed):
