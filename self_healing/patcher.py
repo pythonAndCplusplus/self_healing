@@ -1,5 +1,5 @@
 #main repair code
-from data.detail import details, yes
+from .data.detail import details, yes
 from .data.values import reset_font, font, error
 from .data.fixes import error_fixes, detailed_error_fixes
 
