@@ -9,7 +9,7 @@ def get_error(code, file, line, details, detailed):
         print(f"{font.white}please enter {error}{font.white}, when done, enter{font.white} '{font.red}exit{font.white}' at {font.blue}new line")
         reset_font()
         bug = multiline_input()
-        if not bug:
+        if bug == "":
             print(issue_not_found)
             reset_font()
             user_answer = input()
@@ -27,11 +27,11 @@ def get_error(code, file, line, details, detailed):
             debuger = SelfHealingRunner(code, bug, details)
             debuger.heal_code()
 
-def debug_code(code="", path="", bug="", file= False, line= True, detailed=False):
-    if not code and path:
+def debug_code(code= "", path= "", bug= "", file= False, line= True, detailed=False):
+    if code == "" and path != "":
         with open(path, "r") as program:
             code = program.read()
-    elif not code and not path:
+    elif code == "" and path == "":
         print(f"{font.white}enter code or path, then {font.green}enter{font.white} '{font.red}exit{font.white}' at new line")
         user_answer = multiline_input()
         if user_answer == r"^[A-Z]:\\\\.+\.py":
@@ -42,7 +42,7 @@ def debug_code(code="", path="", bug="", file= False, line= True, detailed=False
             code = user_answer
     details = {"file": file, "line": line, "detail": detailed}
     print(f"{font.blue}debuging started", end="\r")
-    if not bug:
+    if bug == "":
         print(issue_not_found)
         reset_font()
         user_answer = input()
