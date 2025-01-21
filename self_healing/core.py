@@ -62,10 +62,10 @@ def debug_code(code="", path="", bug="", file= False, line= True, detailed=False
 
 
 def check_code(code="", path="", file= False, line= True, debug=False, detailed=False):
-    if not code and path:
+    if code == "" and path != "":
         with open(path, "r") as program:
             code = program.read()
-    elif not code and not path:
+    elif code == "" and path == "":
         print(f"{font.white}enter code or path, then {font.green}enter{font.white} '{font.red}exit{font.white}' at new line")
         user_answer = multiline_input()
         if user_answer == r'^[A-Z]:[\\, \\\\].+\.py':
@@ -74,7 +74,8 @@ def check_code(code="", path="", file= False, line= True, debug=False, detailed=
                 code = program.read()
         else:
             code = str(user_answer)
-    runner = SelfHealingRunner(code)
+    details = {"file": file, "line": line, "detail": detailed}
+    runner = SelfHealingRunner(code, error_message="", detail=details)
     results = runner.run()
     if results["error"]:
         print(f"{font.red}Status{font.white}:{font.yellow}{results["status"]}\n{font.red}Output{font.white}:{font.yellow}\n{results["message"]}")
@@ -83,9 +84,9 @@ def check_code(code="", path="", file= False, line= True, debug=False, detailed=
             reset_font()
             user_answer = input()
             if user_answer.lower() in yes:
-                debug_code(code, results["message"], file, line, detailed)
+                debug_code(code, path, results["message"], file, line, detailed)
         else:
-            debug_code(code, results["message"], file, line, detailed)
+            debug_code(code, path, results["message"], file, line, detailed)
     else:
         print(f"{font.blue}Status{font.white}:{font.green}{results["status"]}\n{font.blue}Output{font.white}:{font.green}\n{results["message"]}")
         reset_font()
